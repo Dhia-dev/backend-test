@@ -9,11 +9,19 @@ const authRoutes = require('./routes/auth.routes');
 const productRoutes = require('./routes/product.routes');
 const app = express();
 
-// Middleware
-app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const corsOptions = {
+  origin: ['https://front-test-henna-seven.vercel.app', 'http://localhost:5173'],  
+  credentials: true,  
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
 
+
+app.use(cors(corsOptions));
 
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
