@@ -33,10 +33,6 @@ const productSchema = new mongoose.Schema({
       max: 5
     }
   }],
-  averageRating: {
-    type: Number,
-    default: 0
-  }
 }, { timestamps: true });
 
 productSchema.index({ name: 'text', description: 'text' });

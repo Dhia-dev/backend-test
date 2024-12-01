@@ -6,7 +6,7 @@ const path = require('path');
 require('dotenv').config();
 
 const authRoutes = require('./routes/auth.routes');
-
+const productRoutes = require('./routes/product.routes');
 const app = express();
 
 // Middleware
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.use('/api/auth', authRoutes);
-
+app.use('/api/products', productRoutes);
 // MongoDB Connection
 mongoose
   .connect(process.env.MONGODB_URI)
